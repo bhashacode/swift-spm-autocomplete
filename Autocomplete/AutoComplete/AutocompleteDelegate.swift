@@ -10,15 +10,14 @@ import UIKit
 
 public protocol AutocompleteDelegate: class {
     func autoCompleteTextField() -> UITextField
-    func autoCompleteThreshold(_ textField: UITextField) -> Int
-    func autoCompleteItemsForSearchTerm(_ term: String) -> [AutocompletableOption]
+    func autoCompleteThreshold(textField: UITextField) -> Int
+    func autoCompleteItemsForSearchTerm(term: String) -> [AutocompletableOption]
     func autoCompleteHeight() -> CGFloat
-    func didSelectItem(_ item: AutocompletableOption) -> Void
-    func animationForInsertion() -> UITableView.RowAnimation
-    func animationForDeletion() -> UITableView.RowAnimation
+    func didSelectItem(item: AutocompletableOption) -> Void
 
     func nibForAutoCompleteCell() -> UINib
     func heightForCells() -> CGFloat
+    func maxHeightForController() -> CGFloat?
     func getCellDataAssigner() -> ((UITableViewCell, AutocompletableOption) -> Void)
 }
 
@@ -28,7 +27,7 @@ public extension AutocompleteDelegate {
     }
 
     func heightForCells() -> CGFloat {
-        return 60
+        return 70
     }
 
     func getCellDataAssigner() -> ((UITableViewCell, AutocompletableOption) -> Void) {
@@ -36,16 +35,14 @@ public extension AutocompleteDelegate {
             (cell: UITableViewCell, cellData: AutocompletableOption) -> Void in
             if let cell = cell as? AutoCompleteCell, let cellData = cellData as? AutocompleteCellData {
                 cell.textImage = cellData
+                cell.layoutIfNeeded()
             }
         }
+        
         return assigner
     }
     
-    func animationForInsertion() -> UITableView.RowAnimation {
-        return .fade
-    }
-    
-    func animationForDeletion() -> UITableView.RowAnimation {
-        return .fade
+    func maxHeightForController() -> CGFloat?{
+        return nil
     }
 }

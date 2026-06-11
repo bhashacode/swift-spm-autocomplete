@@ -7,16 +7,21 @@
 //
 
 import UIKit
-open class AutoCompleteCell: UITableViewCell {
+public class AutoCompleteCell: UITableViewCell {
     //MARK: - outlets
-    @IBOutlet fileprivate weak var lblTitle: UILabel!
-    @IBOutlet fileprivate weak var imgIcon: UIImageView!
+    @IBOutlet private weak var lblTitle: UILabel!
+    @IBOutlet var lblSubTitle: UILabel!
+    @IBOutlet private weak var imgIcon: UIImageView!
 
     //MARK: - public properties
-    open var textImage: AutocompleteCellData? {
+    public var textImage: AutocompleteCellData? {
         didSet {
-            self.lblTitle.text = textImage!.text
+//            self.lblTitle.numberOfLines = 0
+            self.lblTitle.text = textImage!.text.capitalized
             self.imgIcon.image = textImage!.image
+            self.lblSubTitle.text = textImage!.subTitle.capitalized
+            self.lblTitle.font = textImage?.titleFont
+            self.lblSubTitle.font = textImage?.subTitleFont
         }
     }
 }
