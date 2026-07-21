@@ -12,7 +12,7 @@
         <!--Auto Complete View Controller-->
         <scene sceneID="n7o-ZI-Hf6">
             <objects>
-                <viewController storyboardIdentifier="autocompleteScene" id="9hN-Mv-9dW" customClass="AutoCompleteViewController" customModule="CCAutocomplete" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="autocompleteScene" id="9hN-Mv-9dW" customClass="AutoCompleteViewController" customModule="CCAutocomplete" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EqX-a6-6y2"/>
                         <viewControllerLayoutGuide type="bottom" id="KSf-w5-RPT"/>
